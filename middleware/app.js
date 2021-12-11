@@ -1,0 +1,11 @@
+const express = require("express");
+const app = express();
+var bodyParser = require("body-parser");
+const router = require("./routes/routing.js");
+const myErrorLogger = require("./utilities/errorLogger.js");
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use("/", router);
+app.use(myErrorLogger);
+console.log("Server Started at port 3000!");
+app.listen(3000);
